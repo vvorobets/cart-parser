@@ -74,4 +74,7 @@ describe("CartParser - integration tests", () => {
     it('should return the correct data from network request', () => {
         expect(parser.readFile('./samples/cart.csv')).toMatch('Product name,Price,Quantity\r\nMollis consequat,9.00,2\r\nTvoluptatem,10.32,1\r\nScelerisque lacinia,18.90,1\r\nConsectetur adipiscing,28.72,10\r\nCondimentum aliquet,13.90,1\r\n');
     });
+    it('should return the correct result after file request, parsing and calculation', () => {
+        expect(parser.parse('./samples/cart2.csv')).toHaveProperty('total', 33.72);
+    });
 });
