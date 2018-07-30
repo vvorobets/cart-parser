@@ -75,6 +75,35 @@ describe("CartParser - integration tests", () => {
     //     expect(parser.readFile('./samples/cart.csv')).toMatch('Product name,Price,Quantity\r\nMollis consequat,9.00,2\r\nTvoluptatem,10.32,1\r\nScelerisque lacinia,18.90,1\r\nConsectetur adipiscing,28.72,10\r\nCondimentum aliquet,13.90,1\r\n');
     // });
     it('should return the correct result after file request, parsing and calculation', () => {
-        expect(parser.parse('./samples/cart2.csv')).toHaveProperty('total', 33.72);
+        expect(parser.parse('./samples/cart2.csv')).toMatchObject({
+            "items": [
+                {
+                    "name": "Mollis consequat",
+                    "price": 1.00,
+                    "quantity": 2
+                },
+                {
+                    "name": "Tvoluptatem",
+                    "price": 1.32,
+                    "quantity": 1
+                },
+                {
+                    "name": "Scelerisque lacinia",
+                    "price": 1.90,
+                    "quantity": 1
+                },
+                {
+                    "name": "Consectetur adipiscing",
+                    "price": 2.72,
+                    "quantity": 10
+                },
+                {
+                    "name": "Condimentum aliquet",
+                    "price": 1.30,
+                    "quantity": 1
+                }
+            ],
+            "total": 33.72
+        });
     });
 });
